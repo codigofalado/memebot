@@ -1,5 +1,7 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import User from '../user/user';
+import Commands from '../user/commands';
 import TwitchJs, { Api, ApiVersions, Chat, Message, TwitchJsOptions } from 'twitch-js';
 
 @Injectable()
@@ -32,11 +34,18 @@ export class MemebotService implements OnModuleInit {
         // Listen for all messages.
         this.chat.on(TwitchJs.Chat.Events.ALL, message => {
             if(message.command === TwitchJs.Chat.Commands.PRIVATE_MESSAGE){
+                const user = new User(message);
+                const commands = new Commands(user.message);
+                if(commands.isCommand){
+                    if(user.isSub){
+                        this.chat.say(this.channel, `@${user.username}, você usou o ${commands.command}!`); 
+                    }else{
+                        this.chat.say(this.channel, `@${user.username}, apenas inscritos podem usar este comando. Use !sub para mais detalhes.`); 
+                    }
+                    
+                }
                 // console.log(`Nova Mensagem de ${message.username}: ${message.message}`);
                 console.log(`Nova Mensagem de ${message.username}:`, message);
-                if(message.username == 'codigofalado'){
-                    this.chat.say(this.channel, `@${message.username}, sua linda!`);                    
-                }
             }else{
                 // console.log(`Nova Mensagem estranha`, message);
             }
