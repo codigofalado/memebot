@@ -32,12 +32,13 @@ export class MemebotService implements OnModuleInit {
         // Listen for all messages.
         this.chat.on(TwitchJs.Chat.Events.ALL, message => {
             if(message.command === TwitchJs.Chat.Commands.PRIVATE_MESSAGE){
-                console.log(`Nova Mensagem de ${message.username}: ${message.message}`);
+                // console.log(`Nova Mensagem de ${message.username}: ${message.message}`);
+                console.log(`Nova Mensagem de ${message.username}:`, message);
                 if(message.username == 'codigofalado'){
-                    this.chat.say(this.channel, `@${message.username}, cala essa sua boca!`);                    
+                    this.chat.say(this.channel, `@${message.username}, sua linda!`);                    
                 }
             }else{
-                console.log(`Nova Mensagem estranha`, message);
+                // console.log(`Nova Mensagem estranha`, message);
             }
             
             // Use discriminated unions on `message.command` and `message.event` to
