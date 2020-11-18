@@ -15,6 +15,7 @@ O objetivo deste BOT é permitir que SUBs do Canal Código Falado possam digitar
 - [x] Instalar a Twitch JS ou concorrente
 - [x] Criar arquivo de configuração com os dados do canal
 - [x] Conectar-se ao chat e "ouvir" as mensagens
+- [ ] Abstrair os dados da mensagem individual e criar uma classe User
 - [ ] Criar uns comandos de teste
 - [ ] Certificar-se de que apenas subs podem enviar os comandos
 - [ ] Adicionar um cooldown de 60 segundos por comando
