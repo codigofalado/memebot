@@ -12,13 +12,14 @@ O objetivo deste BOT é permitir que SUBs do Canal Código Falado possam digitar
 
 - [x] Instalar o Nest.JS
 - [x] Criar um módulo para receber o código do BOT
-- [x] Instalar a Twitch JS ou concorrente
+- [x] Instalar a Twitch JS
 - [x] Criar arquivo de configuração com os dados do canal
 - [x] Conectar-se ao chat e "ouvir" as mensagens
 - [x] Abstrair os dados da mensagem individual e criar uma classe User
 - [x] Criar uns comandos de teste
 - [x] Certificar-se de que apenas subs podem enviar os comandos
-- [ ] Adicionar um cooldown de 60 segundos por comando
+- [x] Certificar-se de que os comandos são case insensitive
+- [x] Adicionar um cooldown de 60 segundos por comando
 - [ ] Instalar a dependência necessária para a comunicação BOT -> OBS
 - [ ] Tentar listar as cenas
 - [ ] Tentar exibir/ocultar diferentes sources

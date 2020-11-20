@@ -31,14 +31,23 @@ export class MemebotService implements OnModuleInit {
     }
     onModuleInit() {
         console.log(`The module has been initialized.`);
+        let lastCommandTimestamp = new Date("1983-02-27").valueOf();
         // Listen for all messages.
         this.chat.on(TwitchJs.Chat.Events.ALL, message => {
             if(message.command === TwitchJs.Chat.Commands.PRIVATE_MESSAGE){
                 const user = new User(message);
                 const commands = new Commands(user.message);
+                const cooldown = this.configService.get<number>('COOLDOWN');
                 if(commands.isCommand){
                     if(user.isSub){
-                        this.chat.say(this.channel, `@${user.username}, você usou o ${commands.command}!`); 
+                        let seconds = Math.floor((user.date.valueOf() - lastCommandTimestamp) / 1000);
+                        if(seconds < cooldown){
+                            this.chat.say(this.channel, `@${user.username}, aguarde ${cooldown - seconds} segundos para usar ${commands.command} novamente!`);
+                        }else{
+                            this.chat.say(this.channel, `@${user.username}, você usou o ${commands.command}!`);
+                            lastCommandTimestamp = user.date.valueOf();
+                            seconds = cooldown;
+                        }                        
                     }else{
                         this.chat.say(this.channel, `@${user.username}, apenas inscritos podem usar este comando. Use !sub para mais detalhes.`); 
                     }

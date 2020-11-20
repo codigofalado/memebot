@@ -4,7 +4,7 @@ export default class Commands {
         KO: ["!ko"],
         Windows: ["!windows", "!ruindows", "!telaazul"],
         Surprise: ["!surprise", "!modafoca", "!surpresa"],
-        Think: ["!think", "!thinking", "!esperto"],
+        Think: ["!think", "!esperto"],
         Memes: ["!memes", "!meme"]
     };
     private _isCommand = false;
@@ -13,7 +13,7 @@ export default class Commands {
         Object.keys(this.commands).forEach(e => {
             if(!this._isCommand){
                 this.commands[e].forEach(element => {
-                    if(message.startsWith(element)){
+                    if(message.toLowerCase().startsWith(element)){
                         this._isCommand = true;
                         this._command = e;
                         return;

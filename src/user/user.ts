@@ -14,4 +14,7 @@ export default class User {
     get message():string{
         return this._message.message;
     }
+    get date():Date{
+        return new Date(this._message.timestamp);
+    }
 }
