@@ -20,11 +20,11 @@ O objetivo deste BOT é permitir que SUBs do Canal Código Falado possam digitar
 - [x] Certificar-se de que apenas subs podem enviar os comandos
 - [x] Certificar-se de que os comandos são case insensitive
 - [x] Adicionar um cooldown de 60 segundos por comando
-- [ ] Instalar a dependência necessária para a comunicação BOT -> OBS
-- [ ] Tentar listar as cenas
-- [ ] Tentar exibir/ocultar diferentes sources
-- [ ] Criar os comandos finais para o BOT
-- [ ] Conectar cada comando com o respectivo source
+- [x] Instalar a dependência necessária para a comunicação BOT -> OBS
+- [x] Tentar listar os Sources
+- [x] Tentar exibir/ocultar diferentes sources
+- [x] Criar os comandos finais para o BOT
+- [x] Conectar cada comando com o respectivo source
 - [ ] Criar um comando para meme randômico
 
 ## Installation
