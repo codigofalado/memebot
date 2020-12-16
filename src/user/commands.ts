@@ -2,9 +2,13 @@ export default class Commands {
     // Cada comando é um MEME diferente no vídeo
     private commands = {
         KO: ["!ko"],
+        Shit: ["!shit", "!merda"],
+        Nazare: ["!nazare", "!conta", "!matematica"],
         Windows: ["!windows", "!ruindows", "!telaazul"],
         Surprise: ["!surprise", "!modafoca", "!surpresa"],
-        Think: ["!think", "!esperto"],
+        Smart: ["!think", "!smart", "!esperto"],
+        Magic: ["!magic"],
+        Dancing: ["!dancing", "!dança", "!danca"],
         Memes: ["!memes", "!meme"]
     };
     private _isCommand = false;
@@ -27,5 +31,8 @@ export default class Commands {
     }
     get isCommand(){
         return this._isCommand;
+    }
+    get all(){
+        return 'Você pode usar esses memes: !ko, !windows, !surprise, !smart, !nazare, !magic, !dancing, !shit';
     }
 }
