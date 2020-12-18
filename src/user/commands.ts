@@ -8,7 +8,10 @@ export default class Commands {
         Surprise: ["!surprise", "!modafoca", "!surpresa"],
         Smart: ["!think", "!smart", "!esperto"],
         Magic: ["!magic"],
+        Cafe: ["!cafe", "!café", "!coffee"],
         Dancing: ["!dancing", "!dança", "!danca"],
+        Uau: ["!uau", "!wow"],
+        Erro: ["!erro", "!error", "!bug"],
         Memes: ["!memes", "!meme"]
     };
     private _isCommand = false;
@@ -33,6 +36,6 @@ export default class Commands {
         return this._isCommand;
     }
     get all(){
-        return 'Você pode usar esses memes: !ko, !windows, !surprise, !smart, !nazare, !magic, !dancing, !shit';
+        return 'Você pode usar esses memes: !ko, !windows, !surprise, !smart, !nazare, !magic, !dancing, !shit, !cafe, !uau, !erro';
     }
 }
