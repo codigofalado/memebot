@@ -15,17 +15,21 @@ export class MemebotService implements OnModuleInit {
         const token = this.configService.get<string>('TOKEN');
         const username = this.configService.get<string>('USER');
         this.channel = this.configService.get<string>('CHANNEL');
+        const obs_address = this.configService.get<string>('OBS_ADDRESS');
+        const obs_port = this.configService.get<string>('OBS_PORT');
+        const obs_password = this.configService.get<string>('OBS_PASSWORD');
         const { api, chat } = new TwitchJs({ token, username });
         this.api = api;
         this.chat = chat;
         let _obs = new OBSWebSocket();
         _obs.connect({
-            address: 'localhost:4444'
+            address: `${obs_address}:${obs_port}`,
+            password: obs_password
         }).then(() => {
             this.obs = _obs;
             // Listen to Visibility Change
             this.obs.on('SceneItemVisibilityChanged', async (data) => {
-                if(data.sceneName == "Grupo: Memes" && data.itemVisible === true){
+                if(data.sceneName == "Memes" && data.itemVisible === true){
                     setTimeout(() => { return this.setMemeVisibility(data.itemName, false)}, 5000);
                 }
             });
@@ -37,30 +41,12 @@ export class MemebotService implements OnModuleInit {
         });
         console.log("Memebot Provider Started");
     }
-
-    test(){
-        const test = this.configService.get<string>('TESTE');
-        console.log(test);
-    }
     async setMemeVisibility(meme:string, visibility:boolean){
         return this.obs.send("SetSceneItemProperties", {
-            'scene-name': "Grupo: Memes",
+            'scene-name': "Memes",
             item: meme,
             visible: visibility
         })
-    }
-    async OBSTest(){
-        let source = await this.setMemeVisibility("KO", true)
-                                .catch(data => console.log(data));
-        return console.log("SOURCE QUENTINHO", source);
-        // return this.obs.connect({
-        //     address: 'localhost:4444'
-        // }).then(() => {
-        //     console.log('CONECTOU NO OBS');
-        //     return this.obs.send('GetVersion').then(data => {
-        //         return data;
-        //     });
-        // });
     }
     onModuleInit() {
         console.log(`The module has been initialized.`);
@@ -76,7 +62,7 @@ export class MemebotService implements OnModuleInit {
                     if(commands.command == 'Memes'){
                         return this.chat.say(this.channel, `@${user.username}, ${commands.all}`);
                     }
-                    if(user.isSub){
+                    // if(user.isSub){
                         let seconds = Math.floor((user.date.valueOf() - lastCommandTimestamp) / 1000);
                         if(seconds < cooldown){
                             this.chat.say(this.channel, `@${user.username}, aguarde ${cooldown - seconds} segundos para usar ${commands.command} novamente!`);
@@ -85,9 +71,9 @@ export class MemebotService implements OnModuleInit {
                             seconds = cooldown;
                             this.setMemeVisibility(commands.command, true);
                         }                        
-                    }else{
-                        this.chat.say(this.channel, `@${user.username}, apenas inscritos podem usar este comando. Use !sub para mais detalhes.`); 
-                    }
+                    // }else{
+                    //     this.chat.say(this.channel, `@${user.username}, apenas inscritos podem usar este comando. Use !sub para mais detalhes.`); 
+                    // }
                     
                 }
                 // console.log(`Nova Mensagem de ${message.username}: ${message.message}`);
@@ -105,7 +91,6 @@ export class MemebotService implements OnModuleInit {
                 console.log(message.parameters.subPlan);
                 // Do stuff with subscription message ...
             }
-            //this.OBSTest();
         });
     }
 }
