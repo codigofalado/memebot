@@ -2,17 +2,19 @@ export default class Commands {
     // Cada comando é um MEME diferente no vídeo
     private commands = {
         KO: ["!ko"],
-        Boy: ["!boy", "!boi", "!hehe"],
+        Boy: ["!hehe", "!boy", "!boi"],
         Shit: ["!shit", "!merda"],
         Nazare: ["!nazare", "!conta", "!matematica"],
         Windows: ["!windows", "!ruindows", "!telaazul"],
         Surprise: ["!surprise", "!modafoca", "!surpresa"],
-        Smart: ["!think", "!smart", "!esperto"],
+        Smart: ["!smart", "!think", "!esperto"],
         Magic: ["!magic"],
         Cafe: ["!cafe", "!café", "!coffee"],
-        Dancing: ["!dancing", "!dança", "!danca"],
+        Dancing: ["!dancing", "!dança", "!danca", "!dance"],
         Uau: ["!uau", "!wow"],
+        Errou: ["!errou", "!errado"],
         Erro: ["!erro", "!error", "!bug"],
+        Confuso: ["!confuso", "!travolta"],
         Memes: ["!memes", "!meme"]
     };
     private _isCommand = false;
@@ -37,6 +39,12 @@ export default class Commands {
         return this._isCommand;
     }
     get all(){
-        return 'Você pode usar esses memes: !ko, !windows, !surprise, !smart, !nazare, !magic, !dancing, !shit, !cafe, !uau, !erro, !hehe';
+        let allCommands = "!memes";
+        Object.keys(this.commands).forEach(element => {
+            if(element != "Memes"){
+                allCommands += ", "+ this.commands[element][0];
+            }
+        });
+        return `Você pode usar esses memes: ${allCommands}`;
     }
 }

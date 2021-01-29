@@ -12,7 +12,7 @@ Foi desenvolvido ao vivo no canal de Live Coding [Código Falado](https://www.tw
 4. Você precisa criar uma CENA no seu OBS chamada "Memes". Nesta cena você vai adicionar todos os memes em forma de "Media Source". Ao adicionar cada Meme, use sempre uma única palavra no nome do Media Source que você está incluindo. Após posicionar o meme na tela, oculte-o. O trabalho do BOT está em identificar o comando digitado no chat e tornar o seu Media Source visível por 5 segundos. É importante que, ao adicionar um Media Source, você marque os checkboxes **"Restart playback when source becomes active"**, **"Show nothing when playback ends"** e **"Close file when inactive"**.
 5. Importe a CENA "Memes" para as outras Cenas da sua Live, deixe-a sempre no topo para que os memes possam aparecer em cima dos elementos da sua Live.
 
-## Instalação em 10 Passos Simples
+## Instalação em 9 Passos Simples
 
 1. Baixe este projeto para o seu computador.
 2. Entre na pasta deste projeto pelo terminal.
@@ -32,10 +32,9 @@ private commands = {
 Onde `Source1` e `Source2` serão os nomes de cada source que você adicionou na sua CENA "Memes" em seu OBS. E `!comando1`/`!outro_comando` são os comandos que o usuário precisa digitar no chat da Twitch para ativar/usar este meme. **Não delete o comando "Memes", que fica na última linha da declaração de `commands`.**
 Depois que você adicionou todos os comandos no arquivo `src/user/commands.ts`, o objeto `commands` deverá conter uma linha de código para cada Media Source presente em sua CENA "Memes" no OBS, mais uma linha para o próprio comando "!memes".
 
-7. No final do arquivo `src/user/commands.ts`, edite a função `all()`. Esta função é o que o MEMEBOT manda para o chat da Twitch quando o usuário digita `!memes` ou `!meme` (ou qualquer outro comando que você atribuir ao `Meme` no objeto `commands`).
-8. Digite `npm run build` para criar a aplicação.
-9. Está tudo pronto para colocar o MEMEBOT para funcionar. Sempre que você for começar uma Live, rode o comando `npm run start` em seu terminal, à partir da pasta principal do MEMEBOT.
-10. Teste seus comandos no chat da Twich e faça uma dança de comemoração.
+7. Digite `npm run build` para criar a aplicação.
+8. Está tudo pronto para colocar o MEMEBOT para funcionar. Sempre que você for começar uma Live, rode o comando `npm run start` em seu terminal, à partir da pasta principal do MEMEBOT.
+9. Teste seus comandos no chat da Twich e faça uma dança de comemoração.
 
 ### Explicando o `.env`
 
