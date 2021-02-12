@@ -15,6 +15,12 @@ export default class Commands {
         Errou: ["!errou", "!errado"],
         Erro: ["!erro", "!error", "!bug"],
         Confuso: ["!confuso", "!travolta"],
+        Woohoo: ["!woohoo", "!uhu", "!wohoo"],
+        Hackerman: ["!hacker"],
+        Thug: ["!thug"],
+        Codigo: ["!codigo", "!code"],
+        Denied: ["!denied", "!negado"],
+        Loading: ["!loading", "!carregando"],
         Memes: ["!memes", "!meme"]
     };
     private _isCommand = false;

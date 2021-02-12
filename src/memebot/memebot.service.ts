@@ -30,7 +30,7 @@ export class MemebotService implements OnModuleInit {
             // Listen to Visibility Change
             this.obs.on('SceneItemVisibilityChanged', async (data) => {
                 if(data.sceneName == "Memes" && data.itemVisible === true){
-                    setTimeout(() => { return this.setMemeVisibility(data.itemName, false)}, 5000);
+                    setTimeout(() => { return this.setMemeVisibility(data.itemName, false)}, 6000);
                 }
             });
             // Connect ...
